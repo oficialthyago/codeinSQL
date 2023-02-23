@@ -1,0 +1,24 @@
+"CREATE TABLE usuarios (id int AUTO_INCREMENT PRIMARY KEY ,nome varchar(50),contato varchar(50),email varchar(50),cpf varchar(50),dataNas date,login varchar(50),senha varchar(10) ,adm boolean);
+ 
+INSERT INTO usuarios (nome,contato,email,cpf,dataNas,login,senha,adm) VALUES 
+("João Silva"   ,"119999999","joao.silva@gmail.com"   ,'111.111.111-11',"1985-01-01","joaosilva"   ,"senha123   " ,TRUE ),
+("Maria Souza"  ,"219999999","maria.souza@gmail.com"  ,'222.222.222-22',"1982-05-15","mariasouza"  ,"senha456   " ,TRUE ),
+("Pedro Santos" ,"319999999","pedro.santos@gmail.com" ,'333.333.333-33',"1970-03-28","pedrosantos" ,"senha789   " ,TRUE ),
+("Ana Costa"    ,"419999999","ana.costa@gmail.com"    ,'444.444.444-44',"1999-12-31","anacosta"    ,"senha101112" ,FALSE),
+("Luiz Souza"   ,"519999999","luiz.souza@gmail.com"   ,'555.555.555-55',"1987-11-24","luizsouza"   ,"senha131415" ,FALSE),
+("Fernanda Lima","619999999","fernanda.lima@gmail.com",'666.666.666-66',"2005-07-11","fernandalima","senha161718" ,FALSE),
+("André Gomes"  ,"719999999","andre.gomes@gmail.com"  ,'777.777.777-77',"1980-10-05","andregomes"  ,"senha192021" ,TRUE ),
+("Renata Vieira","819999999","renata.vieira@gmail.com",'888.888.888-88',"1992-02-14","renatavieira","senha222324" ,FALSE);
+
+
+/* DELETE USER QUE SÃO MENORES DE 18 ANOS */
+/*DELETE FROM usuarios WHERE TIMESTAMPDIFF(YEAR, dataNas, CURDATE()) < 18;*/
+
+/*TROQUE O NOME DO USER NO ID 2 */
+/*UPDATE usuarios SET Nome = 'Maria Oliveira' WHERE ID = 2;*/
+
+/* SELECIONE USER A QUAL SÃO ADMS */
+/*SELECT * FROM usuarios WHERE Adm = TRUE;
+
+/* SELECIONE USER QUE TEM DATA DE NASCIMENTO ANTERIOR A 1980*/
+/*SELECT * FROM usuarios WHERE YEAR(DataNas) < 1980;*/"
