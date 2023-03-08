@@ -1,0 +1,79 @@
+create table usuarios (ID int auto_increment PRIMARY KEY , Nome VARCHAR(25), Login VARCHAR(25), Senha VARCHAR(25), Ativo BOOL);
+
+
+insert into usuarios(Nome, Login, Senha, Ativo) VALUES
+
+("JOAO", "JSV", "12345", TRUE),
+
+("THYAGO", "TCR", "5432" , TRUE),
+
+("DAY", "DAY", "2333" ,FALSE),
+
+("MARCIA", "MRC", "6654" ,FALSE);
+
+
+
+create table email_usuarios (ID INT auto_increment  PRIMARY KEY , IDusuario int, email VARCHAR(100), FOREIGN KEY(IDusuario) REFERENCES usuarios(ID));
+
+insert into email_usuarios(IDusuario, Email) VALUES
+
+(1, "JSS@GML"),
+
+(1, "TCR@GML"),
+
+(2, "DAY@GML"),
+
+(3, "MRC@GML");
+
+
+
+create table usuarios_perfil (ID int auto_increment, IDusuario int, IDperfil int, PRIMARY KEY(ID), FOREIGN KEY(IDusuario) REFERENCES usuarios(ID), FOREIGN KEY(IDperfil) REFERENCES perfil(ID));
+
+insert into usuarios_perfil(IDusuario, IDperfil) VALUES 
+
+  (2,1), (2,2), (3,2), (1,3);
+
+
+create table perfil (ID int auto_increment Primary Key , perfil VARCHAR(25));
+   
+insert into perfil(perfil) VALUES
+
+("admin"), ("usu"), ("hook");
+
+/* Consultas que cruzão as 4 tabelas */
+
+
+/*
+SELECT*FROM usuarios;
+
+
+
+SELECT*FROM usuarios_perfil;
+
+
+
+SELECT*FROM email_usuarios;
+
+
+
+SELECT*FROM perfil;
+
+
+
+SELECT u.Nome, u.Login, eu.Email FROM usuarios u, email_usuarios eu 
+
+WHERE u.ID = eu.IDusuario;
+
+
+
+SELECT u.Nome, p.perfil FROM usuarios u, perfil p, usuarios_perfil up 
+
+WHERE u.ID = up.IDusuario and p.ID = up.IDperfil;
+
+
+
+
+
+SELECT u.Nome, p.perfil FROM usuarios u, perfil p, usuarios_perfil up 
+
+WHERE u.ID = up.IDusuario and p.ID = up.IDperfil and u.Nome = "THYAGO";
